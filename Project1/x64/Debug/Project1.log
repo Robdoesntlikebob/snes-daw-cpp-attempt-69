@@ -1,10 +1,75 @@
 ﻿  main.cpp
-C:\Users\thech\Desktop\Project1\Project1\sndemu\SPC_DSP.h(11,7): warning C4099: 'SPC_DSP': type name first seen using 'struct' now seen using 'class'
+C:\Users\thech\Documents\GitHub\snes-daw-cpp--attempt-69-\Project1\sndemu\SPC_DSP.h(11,7): warning C4099: 'SPC_DSP': type name first seen using 'struct' now seen using 'class'
   (compiling source file 'main.cpp')
-      C:\Users\thech\Desktop\Project1\Project1\sndemu\SPC_DSP.h(11,7):
+      C:\Users\thech\Documents\GitHub\snes-daw-cpp--attempt-69-\Project1\sndemu\SPC_DSP.h(11,7):
       see declaration of 'SPC_DSP'
   
-C:\Users\thech\Desktop\Project1\Project1\sndemu\SPC_DSP.h(238,57): warning C4244: 'return': conversion from '__int64' to 'int', possible loss of data
+C:\Users\thech\Documents\GitHub\snes-daw-cpp--attempt-69-\Project1\sndemu\SPC_DSP.h(238,57): warning C4244: 'return': conversion from '__int64' to 'int', possible loss of data
   (compiling source file 'main.cpp')
   
-  Project1.vcxproj -> C:\Users\thech\Desktop\Project1\x64\Debug\Project1.exe
+  dsp.cpp
+C:\Users\thech\Documents\GitHub\snes-daw-cpp--attempt-69-\Project1\sndemu\SPC_DSP.h(11,7): warning C4099: 'SPC_DSP': type name first seen using 'struct' now seen using 'class'
+  (compiling source file 'sndemu/dsp.cpp')
+      C:\Users\thech\Documents\GitHub\snes-daw-cpp--attempt-69-\Project1\sndemu\SPC_DSP.h(11,7):
+      see declaration of 'SPC_DSP'
+  
+C:\Users\thech\Documents\GitHub\snes-daw-cpp--attempt-69-\Project1\sndemu\SPC_DSP.h(238,57): warning C4244: 'return': conversion from '__int64' to 'int', possible loss of data
+  (compiling source file 'sndemu/dsp.cpp')
+  
+  SNES_SPC.cpp
+C:\Users\thech\Documents\GitHub\snes-daw-cpp--attempt-69-\Project1\sndemu\SPC_DSP.h(238,57): warning C4244: 'return': conversion from '__int64' to 'int', possible loss of data
+  (compiling source file 'sndemu/SNES_SPC.cpp')
+  
+C:\Users\thech\Documents\GitHub\snes-daw-cpp--attempt-69-\Project1\sndemu\SPC_CPU.h(245,16): warning C4244: 'initializing': conversion from '__int64' to 'int', possible loss of data
+  (compiling source file 'sndemu/SNES_SPC.cpp')
+  
+C:\Users\thech\Documents\GitHub\snes-daw-cpp--attempt-69-\Project1\sndemu\SPC_CPU.h(247,3): warning C4244: 'initializing': conversion from '__int64' to 'int', possible loss of data
+  (compiling source file 'sndemu/SNES_SPC.cpp')
+  
+C:\Users\thech\Documents\GitHub\snes-daw-cpp--attempt-69-\Project1\sndemu\SPC_CPU.h(259,13): warning C4244: 'initializing': conversion from '__int64' to 'int', possible loss of data
+  (compiling source file 'sndemu/SNES_SPC.cpp')
+  
+C:\Users\thech\Documents\GitHub\snes-daw-cpp--attempt-69-\Project1\sndemu\SPC_CPU.h(477,12): warning C4244: '=': conversion from '__int64' to 'int', possible loss of data
+  (compiling source file 'sndemu/SNES_SPC.cpp')
+  
+C:\Users\thech\Documents\GitHub\snes-daw-cpp--attempt-69-\Project1\sndemu\SPC_CPU.h(961,16): warning C4244: 'initializing': conversion from '__int64' to 'int', possible loss of data
+  (compiling source file 'sndemu/SNES_SPC.cpp')
+  
+C:\Users\thech\Documents\GitHub\snes-daw-cpp--attempt-69-\Project1\sndemu\SPC_CPU.h(964,3): warning C4244: 'initializing': conversion from '__int64' to 'int', possible loss of data
+  (compiling source file 'sndemu/SNES_SPC.cpp')
+  
+C:\Users\thech\Documents\GitHub\snes-daw-cpp--attempt-69-\Project1\sndemu\SPC_CPU.h(972,16): warning C4244: 'initializing': conversion from '__int64' to 'int', possible loss of data
+  (compiling source file 'sndemu/SNES_SPC.cpp')
+  
+C:\Users\thech\Documents\GitHub\snes-daw-cpp--attempt-69-\Project1\sndemu\SPC_CPU.h(974,3): warning C4244: 'initializing': conversion from '__int64' to 'int', possible loss of data
+  (compiling source file 'sndemu/SNES_SPC.cpp')
+  
+C:\Users\thech\Documents\GitHub\snes-daw-cpp--attempt-69-\Project1\sndemu\SPC_CPU.h(994,16): warning C4244: 'initializing': conversion from '__int64' to 'int', possible loss of data
+  (compiling source file 'sndemu/SNES_SPC.cpp')
+  
+C:\Users\thech\Documents\GitHub\snes-daw-cpp--attempt-69-\Project1\sndemu\SPC_CPU.h(996,3): warning C4244: 'initializing': conversion from '__int64' to 'int', possible loss of data
+  (compiling source file 'sndemu/SNES_SPC.cpp')
+  
+C:\Users\thech\Documents\GitHub\snes-daw-cpp--attempt-69-\Project1\sndemu\SPC_CPU.h(1182,17): warning C4244: 'initializing': conversion from '__int64' to 'unsigned int', possible loss of data
+  (compiling source file 'sndemu/SNES_SPC.cpp')
+  
+  SNES_SPC_misc.cpp
+C:\Users\thech\Documents\GitHub\snes-daw-cpp--attempt-69-\Project1\sndemu\SPC_DSP.h(238,57): warning C4244: 'return': conversion from '__int64' to 'int', possible loss of data
+  (compiling source file 'sndemu/SNES_SPC_misc.cpp')
+  
+C:\Users\thech\Documents\GitHub\snes-daw-cpp--attempt-69-\Project1\sndemu\SNES_SPC_misc.cpp(306,32): warning C4244: 'argument': conversion from '__int64' to 'int', possible loss of data
+  SNES_SPC_state.cpp
+C:\Users\thech\Documents\GitHub\snes-daw-cpp--attempt-69-\Project1\sndemu\SPC_DSP.h(238,57): warning C4244: 'return': conversion from '__int64' to 'int', possible loss of data
+  (compiling source file 'sndemu/SNES_SPC_state.cpp')
+  
+  spc.cpp
+C:\Users\thech\Documents\GitHub\snes-daw-cpp--attempt-69-\Project1\sndemu\SPC_DSP.h(238,57): warning C4244: 'return': conversion from '__int64' to 'int', possible loss of data
+  (compiling source file 'sndemu/spc.cpp')
+  
+  SPC_DSP.cpp
+C:\Users\thech\Documents\GitHub\snes-daw-cpp--attempt-69-\Project1\sndemu\SPC_DSP.h(238,57): warning C4244: 'return': conversion from '__int64' to 'int', possible loss of data
+  (compiling source file 'sndemu/SPC_DSP.cpp')
+  
+  SPC_Filter.cpp
+  Generating Code...
+  Project1.vcxproj -> C:\Users\thech\Documents\GitHub\snes-daw-cpp--attempt-69-\x64\Debug\Project1.exe

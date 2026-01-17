@@ -6,9 +6,17 @@
 #include "sndemu/SPC_DSP.h"
 #include <SFML/Audio.hpp>
 
-unsigned char BRR_SAWTOOTH[] = {
-    0xB0, 0xFF, 0xEE, 0xDD, 0xCC, 0xBB, 0xAA, 0x99, 0x88,
-    0xB3, 0x77, 0x66, 0x55, 0x44, 0x33, 0x22, 0x11, 0x00,
+//unsigned char BRR_SAWTOOTH[] = {
+//    0xB0, 0xFF, 0xEE, 0xDD, 0xCC, 0xBB, 0xAA, 0x99, 0x88,
+//    0xB3, 0x77, 0x66, 0x55, 0x44, 0x33, 0x22, 0x11, 0x7f,
+//};
+
+short c700sqwave[] = {
+    0b10000100, 0x00, 0x00, 0x77, 0x77, 0x77, 0x77, 0x77, 0x77,
+    0b11000000, 0x99, 0x99, 0x99, 0x99, 0x99, 0x99, 0x99, 0x99,
+    0b11000000, 0x99, 0x99, 0x99, 0x99, 0x99, 0x99, 0x99, 0x99,
+    0b11000000, 0x77, 0x77, 0x77, 0x77, 0x77, 0x77, 0x77, 0x77,
+    0b11000011, 0x77, 0x77, 0x77, 0x77, 0x77, 0x77, 0x77, 0x77
 };
 
 // Constants for the DSP registers.
@@ -78,14 +86,14 @@ int main(int argc, char* argv[]) {
     spc_dsp_reset(dsp);
 
     // Load our instrument into the beginning of ARAM.
-    memcpy(aram, BRR_SAWTOOTH, sizeof(BRR_SAWTOOTH) / sizeof(unsigned char));
+    memcpy(aram, c700sqwave, sizeof(c700sqwave) / sizeof(unsigned char));
 
 
     // There's only one entry in our table.
-    aram[0x100] = 0x00; // sample start address low byte
-    aram[0x101] = 0x00; // sample start address high byte
-    aram[0x102] = 0x00; // sample loop address low byte
-    aram[0x103] = 0x00; // sample loop address high byte
+    aram[0x1000] = 0x00; // sample start address low byte
+    aram[0x1000+1] = 0x00; // sample start address high byte
+    aram[0x1000+2] = 0x00; // sample loop address low byte
+    aram[0x1000+3] = 0x00; // sample loop address high byte
 
     // Tell the DSP that the table of samples starts at 0x0100
     spc_dsp_write(dsp, DIR, 0x01);
@@ -105,8 +113,8 @@ int main(int argc, char* argv[]) {
     spc_dsp_write(dsp, V0SRCN, 0);
 
     // Tell the DSP to play the sample at the original pitch.
-    spc_dsp_write(dsp, V0PITCHL, 0xFF);
-    spc_dsp_write(dsp, V0PITCHH, 0x1F);
+    spc_dsp_write(dsp, V0PITCHL, 0x00);
+    spc_dsp_write(dsp, V0PITCHH, 0x10);
 
     // Set up an ADSR envelope for this voice.
     // We don't want anything complicated,
@@ -124,26 +132,27 @@ int main(int argc, char* argv[]) {
     // our instrument is 16 samples long,
     // and the DSP outputs a sample every 32 clocks.
     // So to see a full loop of our instrument:
-    spc_dsp_run(dsp, (2 + 5 + 16) * 32);
+    spc_dsp_run(dsp, (2 + 5 + 16) * 320);
 
     // How many samples did we actually get?
     // Note that the library counts a two-channel sample as "two samples".
+    // man i fucking hate comments
     int generated_count = spc_dsp_sample_count(dsp) / 2;
     printf("Generated %d samples\n", generated_count);
 
-    // Display the samples the DSP produced
-    for (int i = 0; i < generated_count; i++) {
-        printf("%02d: %04hx %04hx\n", i, output[i * 2], output[1 + i * 2]);
-    }
-    printf("\n");
+    //// Display the samples the DSP produced
+    //for (int i = 0; i < generated_count; i++) {
+    //    printf("%02d: %04hx %04hx\n", i, output[i * 2], output[1 + i * 2]);
+    //}
+    //printf("\n");
     std::cout << "V4SRCN = " << vvoll(4) << std::endl;
 
-    sf::SoundBuffer buf(output, 32000, 2, 32000, {sf::SoundChannel::FrontLeft, sf::SoundChannel::FrontRight});
+    sf::SoundBuffer buf(output, generated_count, 2, 32000, {sf::SoundChannel::FrontLeft, sf::SoundChannel::FrontRight});
     sf::SoundBuffer bufwav("its gonna sound like shit trust me bro.wav");
     sf::Sound snd(buf);
     snd.setLooping(1);
     snd.play();
-    sf::sleep(sf::milliseconds(1000));
+    sf::sleep(sf::milliseconds(2000));
 
     // We're all done!
     return 0;
