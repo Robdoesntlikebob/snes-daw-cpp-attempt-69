@@ -135,35 +135,37 @@ int main() {
     w(vvoll(0), 0x80);
     w(vvolr(0), 0x80);
     w(FLG, 0x20);
-    w(vsrcn(0), 1);
-    pitch(0x107f,0);
+    w(vsrcn(0), 0); w(vsrcn(1), 0);
+    pitch(0x107f,0); pitch(0xe00, 1);
     w(vadsr1(0), ADSR+0xA);
     w(vadsr2(0), 0xe0);
-    w(KON, 1);
-    dsp->run(32*32000/4);
-    w(KOF, 1); advance(2); pitch(0x12bf, 0); w(KOF, 0); w(KON, 1);
-    dsp->run(32 * 32000/4);
-    w(KOF, 1); advance(2); pitch(0x14ff, 0); w(KOF, 0); w(KON, 1);
-    dsp->run(32 * 32000 / 4);
-    w(KOF, 1); advance(2); pitch(0x167f, 0); w(KOF, 0); w(KON, 1);
-    dsp->run(32 * 32000 / 4);
-    w(KOF, 1); advance(2); pitch(0x18ff, 0); w(KOF, 0); w(KON, 1);
-    dsp->run(32 * 32000 / 4);
-    w(KOF, 1); advance(2); pitch(0x1c40, 0); w(KOF, 0); w(KON, 1);
-    dsp->run(32 * 32000 / 4);
-    w(KOF, 1); advance(2); pitch(0x2000, 0); w(KOF, 0); w(KON, 1);
-    dsp->run(32 * 32000 / 4);
-    w(KOF, 1); advance(2); pitch(0x217f, 0); w(KOF, 0); w(KON, 1);
-    dsp->run(32 * 32000 / 4);
-    w(KOF, 1); advance(2);
+    w(vadsr1(1), ADSR + 0xA);
+    w(vadsr2(1), 0xe0);
+    w(KON, 0b00000011);
+    dsp->run(32*32000/4 - (256 * 32));
+    w(KOF, 1); advance(256); pitch(0x12bf, 0); w(KOF, 0); w(KON, 1);
+    dsp->run(32 * 32000/4 - (256*32));
+    w(KOF, 1); advance(256); pitch(0x14ff, 0); w(KOF, 0); w(KON, 1);
+    dsp->run(32 * 32000 / 4 - (256*32));
+    w(KOF, 1); advance(256); pitch(0x167f, 0); w(KOF, 0); w(KON, 1);
+    dsp->run(32 * 32000 / 4 - (256*32));
+    w(KOF, 1); advance(256); pitch(0x18ff, 0); w(KOF, 0); w(KON, 1);
+    dsp->run(32 * 32000 / 4 - (256*32));
+    w(KOF, 1); advance(256); pitch(0x1c40, 0); w(KOF, 0); w(KON, 1);
+    dsp->run(32 * 32000 / 4 - (256*32));
+    w(KOF, 1); advance(256); pitch(0x2000, 0); w(KOF, 0); w(KON, 1);
+    dsp->run(32 * 32000 / 4 - (256*32));
+    w(KOF, 1); advance(256); pitch(0x217f, 0); w(KOF, 0); w(KON, 1);
+    dsp->run(32 * 32000 / 4 - (256*32));
+    w(KOF, 1); advance(256);
 
     /*debug (remove when not needed)*/
-    int generated_count = dsp->sample_count() / 2;
-    printf("Generated %d samples\n", generated_count);
+    //int generated_count = dsp->sample_count() / 2;
+    //printf("Generated %d samples\n", generated_count);
 
-    for (int i = 0; i < 10; i++) {
-        printf("%02d: %04hx %04hx\n", i, output[i * 2], output[1 + i * 2]);
-    }
+    //for (int i = 0; i < 10; i++) {
+    //    printf("%02d: %04hx %04hx\n", i, output[i * 2], output[1 + i * 2]);
+    //}
 
 
     /*SFML side of playing sound*/
@@ -172,6 +174,6 @@ int main() {
     sf::Sound snd(buf);
     snd.setLooping(0);
     snd.play();
-    sf::sleep(sf::milliseconds(2250));
+    sf::sleep(sf::milliseconds(2000));
 
 }
