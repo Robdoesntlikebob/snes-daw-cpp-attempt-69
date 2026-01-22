@@ -31,7 +31,7 @@ unsigned char c700sqwave[] = {
 
 // Constants for the DSP registers.
 
-#define vvoll(n) (n<<4)+0
+#define vvoll(n) (n<<4)
 #define vvolr(n) (n<<4)+1
 #define vpl(n) (n<<4)+2
 #define vph(n) (n<<4)+3
@@ -132,10 +132,10 @@ int main() {
     w(DIR, 0x10);
     w(MVOLL, 0x80);
     w(MVOLR, 0x80);
-    w(vvoll(0), 0x80);
+    w(vvoll(0), 0x80); w(vvolr(1), 0x80); w(vvoll(1), 0x80);
     w(vvolr(0), 0x80);
     w(FLG, 0x20);
-    w(vsrcn(0), 0); w(vsrcn(1), 0);
+    w(vsrcn(0), 1); w(vsrcn(1), 1);
     pitch(0x107f,0); pitch(0xe00, 1);
     w(vadsr1(0), ADSR+0xA);
     w(vadsr2(0), 0xe0);
